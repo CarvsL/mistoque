@@ -1,0 +1,1703 @@
+@import url('https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap');
+
+* {
+  
+}
+
+@media (min-width: 1000px) {
+
+
+  .mobileNav {
+    display: none;
+  }
+
+  .menuIcon {
+    display: none;
+  }
+
+  .container {
+
+    display: flex;
+    flex-direction: column;
+    font-family: 'Tilt Warp', cursive;
+    font-weight: lighter;
+
+
+
+  }
+
+  .header {
+    background-color: #A18561;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+  }
+
+  .logo {
+    font-size: clamp(45px, 2.5vw, 5vw);
+    font-weight: lighter;
+
+
+  }
+
+  .icon {
+    width: clamp(70px, 4.5vw, 8vw);
+    height: auto;
+    margin-right: 30px;
+    vertical-align: middle;
+  }
+
+  .head {
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 1px 10px 1px;
+    width: 100%;
+    background-color: #A18561;
+    gap: 100px;
+
+
+
+  }
+
+
+  .navButtonSair {
+    padding: 10px 20px;
+    background-color: #A18561;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    margin-right: 10px;
+    z-index: 1;
+  }
+
+  .navButtonSair:hover {
+    background-color: #292929;
+    z-index: 1;
+  }
+
+  .navButtonPerfil {
+    padding: 10px 20px;
+    background-color: #A18561;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    margin-right: 10px;
+    z-index: 1;
+  }
+
+  .navButtonPerfil:hover {
+    background-color: #292929;
+    z-index: 1;
+  }
+
+  .navButtonHist {
+    padding: 10px 20px;
+    background-color: #A18561;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    margin-right: 10px;
+    z-index: 1;
+    font-family: 'Tilt Warp', cursive;
+    font-weight: lighter;
+  }
+
+  .navButtonHist:hover {
+    background-color: #292929;
+    z-index: 1;
+  }
+
+  .fundo {
+    position: relative;
+    background-color: #DFD6CA;
+    align-items: center;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+  }
+
+  .fundo::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../../public/fundo.png');
+    /* Substitua pelo caminho da sua imagem */
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 1;
+    /* Ajuste a opacidade conforme necessário */
+    z-index: 0;
+    /* Garante que fique atrás de todo o conteúdo */
+    pointer-events: none;
+    /* Permite interação com elementos acima */
+  }
+
+
+
+
+  .container2 {
+    text-align: center;
+    margin-top: 20px;
+    width: 100%;
+    min-height: 200px;
+    z-index: 1;
+  }
+
+  .titlecat {
+    color: #A18561;
+    font-size: 40px;
+    margin: 0;
+  }
+
+  .searchInput {
+    width: 60vh;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    margin: 20px 0 5px 0;
+    padding: 10px;
+    z-index: 1;
+    background-color: #f9f9f9;
+  }
+
+  .searchInput:focus {
+    outline: 2px solid #A18561;
+    /* Mesmo estilo dos outros inputs */
+    border-color: #A18561;
+  }
+
+  .historicoTableContainer {
+    min-height: 450px;
+    max-width: 100%;
+    background-color: #DFD6CA;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: visible;
+  }
+
+  /* Defina larguras fixas para cada coluna */
+  .historicoTable th:nth-child(1),
+  .historicoTable td:nth-child(1) {
+    width: 20%;
+    /* Largura para a coluna de imagem */
+  }
+
+  .historicoTable th:nth-child(2),
+  .historicoTable td:nth-child(2) {
+    width: 40%;
+    /* Largura para a coluna de nome */
+  }
+
+  .historicoTable th:nth-child(3),
+  .historicoTable td:nth-child(3) {
+    width: 10%;
+    /* Largura para a coluna de preço */
+  }
+
+  .historicoTable th:nth-child(4),
+  .historicoTable td:nth-child(4) {
+    width: 30%;
+    /* Largura para a coluna de quantidade */
+  }
+
+
+
+  .historicoTable {
+    border-collapse: collapse;
+    table-layout: fixed;
+    min-width: 100%;
+    color: #292929;
+    table-layout: fixed;
+  }
+
+  .historicoTable th {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 5px solid rgba(161, 133, 97, 0.5);
+    color: #292929;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+  }
+
+  .historicoTable td {
+    text-align: center;
+    border-bottom: 5px solid rgba(161, 133, 97, 0.5);
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #292929;
+  }
+
+
+
+  .historicoTable tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+  }
+
+  .emptyMessage {
+    text-align: center;
+    width: 100%;
+    font-size: 18px;
+    color: #666;
+    margin-top: 20px;
+  }
+
+  /* Estilos para o modal de detalhes (se necessário) */
+  .modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  .modal {
+    position: relative;
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .modal h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+  }
+
+  .modal .form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .modal .form input,
+  .modal .form textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+  }
+
+  .modal .form textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  .modal .form button[type="submit"] {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+
+  .modal .form button[type="submit"]:hover {
+    background-color: #218838;
+  }
+
+  .closeIcon {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #666;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+
+  .closeIcon:hover {
+    color: #333;
+  }
+
+  /* Estilos para os botões dinâmicos no modal de detalhes */
+  .modalButtons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+
+  .editarButton {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+
+  .editarButton:hover {
+    background-color: #0056b3;
+  }
+
+  .salvarButton {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+
+  .salvarButton:hover {
+    background-color: #218838;
+  }
+
+  .excluirButton {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+
+  .excluirButton:hover {
+    background-color: #c82333;
+  }
+
+
+  /* Estilo do ícone de perfil */
+  .profileIcon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #007bff;
+    color: white;
+    font-size: 20px;
+  }
+
+  .profileIcon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Estilo do modal de perfil */
+  .profileInfo {
+    text-align: center;
+  }
+
+  .profileImage {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+  }
+
+  .logoutButton {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    width: 100%;
+  }
+
+  .logoutButton:hover {
+    background-color: #c82333;
+  }
+
+  /* Estilo para o contêiner da paginação */
+  .paginacao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    gap: 10px;
+    flex-wrap: wrap;
+    /* Permite que os botões quebrem para a próxima linha em telas pequenas */
+  }
+
+  /* Estilo para os botões de paginação */
+  .paginacao button {
+    padding: 8px 12px;
+    border: 1px solid #A18561;
+    background-color: transparent;
+    color: #A18561;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+  }
+
+  /* Efeito hover para os botões */
+  .paginacao button:hover {
+    background-color: #A18561;
+    color: white;
+    box-shadow: 0 4px 8px #A18561;
+  }
+
+  /* Estilo para o botão da página ativa */
+  .paginacao button.activePage {
+    background-color: #A18561;
+    color: white;
+    box-shadow: 0 4px 8px #A18561;
+  }
+
+  /* Efeito hover para o botão da página ativa */
+  .paginacao button.activePage:hover {
+    background-color: #A18561;
+    border-color: #A18561;
+    box-shadow: 0 4px 8px #A18561;
+  }
+
+  /* Estilo para os botões de navegação (< e >) */
+  .paginacao button.navButton {
+    font-size: 16px;
+    /* Tamanho maior para os botões de navegação */
+  }
+
+  /* Estilo para botões desabilitados */
+  .paginacao button:disabled {
+    background-color: #e9ecef;
+    color: #6c757d;
+    border-color: #dee2e6;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+
+  /* Estilo para os pontos de elipse (...) */
+  .paginacao span {
+    padding: 8px 12px;
+    color: #6c757d;
+    font-size: 14px;
+  }
+
+
+
+
+  /* Footer */
+  .footer {
+    background-color: #A18561;
+    color: white;
+    display: flex;
+    /* Ativa Flexbox */
+    justify-content: center;
+    /* Alinhamento horizontal */
+    align-items: center;
+    /* Alinhamento vertical */
+    height: 100px;
+    padding: 15px;
+    text-align: center;
+    /* Garante que o texto dentro do parágrafo fique centralizado */
+  }
+}
+
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+
+@media (min-width: 701px) and (max-width: 1000px) {
+
+
+  .mobileNav {
+    display: none;
+  }
+
+  .menuIcon {
+    display: none;
+  }
+
+  .container {
+
+    display: flex;
+    flex-direction: column;
+    font-family: 'Tilt Warp', cursive;
+  font-weight: lighter;
+
+
+
+  }
+
+  .header {
+    background-color: #A18561;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+  }
+
+  .logo {
+    font-size: clamp(45px, 2.5vw, 5vw);
+    font-weight: lighter;
+
+
+  }
+
+  .icon {
+    width: clamp(70px, 4.5vw, 8vw);
+    height: auto;
+    margin-right: 30px;
+    vertical-align: middle;
+  }
+
+  .head {
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 1px 10px 1px;
+    width: 100%;
+    background-color: #A18561;
+    gap: 36px;
+
+
+
+  }
+
+
+  .navButtonSair {
+    padding: 10px 20px;
+    background-color: #A18561;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    margin-right: 10px;
+    z-index: 1;
+  }
+
+  .navButtonSair:hover {
+    background-color: #292929;
+    z-index: 1;
+  }
+
+  .navButtonPerfil {
+    padding: 10px 20px;
+    background-color: #A18561;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    margin-right: 10px;
+    z-index: 1;
+  }
+
+  .navButtonPerfil:hover {
+    background-color: #292929;
+    z-index: 1;
+  }
+
+  .navButtonHist {
+    padding: 10px 20px;
+    background-color: #A18561;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    margin-right: 10px;
+    z-index: 1;
+  }
+
+  .navButtonHist:hover {
+    background-color: #292929;
+    z-index: 1;
+  }
+
+
+  .fundo {
+    position: relative;
+    background-color: #DFD6CA;
+    align-items: center;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+  }
+
+  .fundo::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../../public/fundo.png');
+    /* Substitua pelo caminho da sua imagem */
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 1;
+    /* Ajuste a opacidade conforme necessário */
+    z-index: 0;
+    /* Garante que fique atrás de todo o conteúdo */
+    pointer-events: none;
+    /* Permite interação com elementos acima */
+  }
+
+
+
+
+  .container2 {
+    text-align: center;
+    margin-top: 20px;
+    width: 100%;
+    min-height: 200px;
+    z-index: 1;
+  }
+
+  .titlecat {
+    color: #A18561;
+    font-size: 40px;
+    margin: 0;
+  }
+
+  .searchInput {
+    width: 60vh;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    margin: 20px 0 5px 0;
+    padding: 10px;
+    z-index: 1;
+    background-color: #f9f9f9;
+  }
+
+  .searchInput:focus {
+    outline: 2px solid #A18561;
+    /* Mesmo estilo dos outros inputs */
+    border-color: #A18561;
+  }
+
+  .historicoTableContainer {
+    min-height: 450px;
+    max-width: 100%;
+    background-color: #DFD6CA;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: visible;
+  }
+
+  /* Defina larguras fixas para cada coluna */
+  .historicoTable th:nth-child(1),
+  .historicoTable td:nth-child(1) {
+    width: 30%;
+    /* Largura para a coluna de imagem */
+  }
+
+  .historicoTable th:nth-child(2),
+  .historicoTable td:nth-child(2) {
+    width: 40%;
+    /* Largura para a coluna de nome */
+  }
+
+  .historicoTable th:nth-child(3),
+  .historicoTable td:nth-child(3) {
+    width: 10%;
+    /* Largura para a coluna de preço */
+  }
+
+  .historicoTable th:nth-child(4),
+  .historicoTable td:nth-child(4) {
+    width: 20%;
+    /* Largura para a coluna de quantidade */
+  }
+
+
+
+  .historicoTable {
+    border-collapse: collapse;
+    table-layout: fixed;
+    min-width: 100%;
+    color: #292929;
+    table-layout: fixed;
+  }
+
+  .historicoTable th {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 5px solid rgba(161, 133, 97, 0.5);
+    color: #292929;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+  }
+
+  .historicoTable td {
+    text-align: center;
+    border-bottom: 5px solid rgba(161, 133, 97, 0.5);
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #292929;
+  }
+
+
+
+  .historicoTable tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+  }
+
+  .emptyMessage {
+    text-align: center;
+    width: 100%;
+    font-size: 18px;
+    color: #666;
+    margin-top: 20px;
+  }
+
+  /* Estilos para o modal de detalhes (se necessário) */
+  .modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  .modal {
+    position: relative;
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .modal h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+  }
+
+  .modal .form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .modal .form input,
+  .modal .form textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+  }
+
+  .modal .form textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  .modal .form button[type="submit"] {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+
+  .modal .form button[type="submit"]:hover {
+    background-color: #218838;
+  }
+
+  .closeIcon {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #666;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+
+  .closeIcon:hover {
+    color: #333;
+  }
+
+  /* Estilos para os botões dinâmicos no modal de detalhes */
+  .modalButtons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+
+  .editarButton {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+
+  .editarButton:hover {
+    background-color: #0056b3;
+  }
+
+  .salvarButton {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+
+  .salvarButton:hover {
+    background-color: #218838;
+  }
+
+  .excluirButton {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+
+  .excluirButton:hover {
+    background-color: #c82333;
+  }
+
+
+  /* Estilo do ícone de perfil */
+  .profileIcon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #007bff;
+    color: white;
+    font-size: 20px;
+  }
+
+  .profileIcon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Estilo do modal de perfil */
+  .profileInfo {
+    text-align: center;
+  }
+
+  .profileImage {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+  }
+
+  .logoutButton {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    width: 100%;
+  }
+
+  .logoutButton:hover {
+    background-color: #c82333;
+  }
+
+  /* Estilo para o contêiner da paginação */
+  .paginacao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    gap: 10px;
+    flex-wrap: wrap;
+    /* Permite que os botões quebrem para a próxima linha em telas pequenas */
+  }
+
+  /* Estilo para os botões de paginação */
+  .paginacao button {
+    padding: 8px 12px;
+    border: 1px solid #A18561;
+    background-color: transparent;
+    color: #A18561;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+  }
+
+  /* Efeito hover para os botões */
+  .paginacao button:hover {
+    background-color: #A18561;
+    color: white;
+    box-shadow: 0 4px 8px #A18561;
+  }
+
+  /* Estilo para o botão da página ativa */
+  .paginacao button.activePage {
+    background-color: #A18561;
+    color: white;
+    box-shadow: 0 4px 8px #A18561;
+  }
+
+  /* Efeito hover para o botão da página ativa */
+  .paginacao button.activePage:hover {
+    background-color: #A18561;
+    border-color: #A18561;
+    box-shadow: 0 4px 8px #A18561;
+  }
+
+  /* Estilo para os botões de navegação (< e >) */
+  .paginacao button.navButton {
+    font-size: 16px;
+    /* Tamanho maior para os botões de navegação */
+  }
+
+  /* Estilo para botões desabilitados */
+  .paginacao button:disabled {
+    background-color: #e9ecef;
+    color: #6c757d;
+    border-color: #dee2e6;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+
+  /* Estilo para os pontos de elipse (...) */
+  .paginacao span {
+    padding: 8px 12px;
+    color: #6c757d;
+    font-size: 14px;
+  }
+
+
+
+
+  /* Footer */
+  .footer {
+    background-color: #A18561;
+    color: white;
+    display: flex;
+    /* Ativa Flexbox */
+    justify-content: center;
+    /* Alinhamento horizontal */
+    align-items: center;
+    /* Alinhamento vertical */
+    height: 100px;
+    padding: 15px;
+    text-align: center;
+    /* Garante que o texto dentro do parágrafo fique centralizado */
+  }
+}
+
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+
+
+@media (max-width: 700px) {
+
+
+  .menuIcon {
+    display: flex;
+    flex-direction: column;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+    margin-left: 20px;
+  }
+
+  .bar {
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    border-radius: 3px;
+    margin-top: 3px;
+
+
+  }
+
+  .bar2 {
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    border-radius: 3px;
+    margin-top: 5px;
+
+
+  }
+
+
+  .mobileNav {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    background-color: #A18561;
+
+  }
+
+  /* Estilos do menu móvel */
+  .mobileNavLinks {
+    width: 100%;
+    max-height: 0;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    transition: max-height 0.4s ease;
+  }
+
+
+  .mobileNavLinks.showMenu {
+    max-height: 200px;
+    padding: 35px 0;
+
+  }
+
+  .mobileNavLinks a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+  }
+
+
+
+  .container {
+
+    display: flex;
+    flex-direction: column;
+    font-family: 'Tilt Warp', cursive;
+  font-weight: lighter;
+
+
+
+  }
+
+  .header {
+    background-color: #A18561;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+  }
+
+  .logo {
+    font-size: clamp(35px, 6vw, 8vw);
+    font-weight: lighter;
+
+
+  }
+
+  .icon {
+    width: clamp(55px, 10vw, 15vw);
+    height: auto;
+    margin-right: 20px;
+    vertical-align: middle;
+  }
+
+  .head {
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 1px 10px 1px;
+    width: 100%;
+    background-color: #A18561;
+    gap: 36px;
+    display: none;
+
+
+
+  }
+
+
+  .navButtonSair {
+    padding: 10px 20px;
+    background-color: #A18561;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    margin-right: 10px;
+    z-index: 1;
+  }
+
+  .navButtonSair:hover {
+    background-color: #292929;
+    z-index: 1;
+  }
+
+  .navButtonPerfil {
+    padding: 10px 20px;
+    background-color: #A18561;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    margin-right: 10px;
+    z-index: 1;
+    
+  }
+
+  .navButtonPerfil:hover {
+    background-color: #292929;
+    z-index: 1;
+  }
+
+  .navButtonHist {
+    padding: 10px 20px;
+    background-color: #A18561;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    margin-right: 10px;
+    z-index: 1;
+    font-family: 'Tilt Warp', cursive;
+    font-weight: lighter;
+  }
+
+  .navButtonHist:hover {
+    background-color: #292929;
+    z-index: 1;
+  }
+
+
+  .fundo {
+    position: relative;
+    background-color: #DFD6CA;
+    align-items: center;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+  }
+
+  .fundo::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../../public/fundo.png');
+    /* Substitua pelo caminho da sua imagem */
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 1;
+    /* Ajuste a opacidade conforme necessário */
+    z-index: 0;
+    /* Garante que fique atrás de todo o conteúdo */
+    pointer-events: none;
+    /* Permite interação com elementos acima */
+  }
+
+
+
+
+  .container2 {
+    text-align: center;
+    margin-top: 20px;
+    width: 100%;
+    min-height: 200px;
+    z-index: 1;
+  }
+
+  .titlecat {
+    color: #A18561;
+    font-size: 40px;
+    margin: 0 15px;
+  }
+
+  .searchInput {
+
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    margin: 30px 0 5px 0;
+    width: 60vw;
+    background-color: #f9f9f9;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+
+    
+
+
+  }
+
+  .searchInput:focus {
+    outline: 2px solid #A18561;
+    /* Mesmo estilo dos outros inputs */
+    border-color: #A18561;
+  }
+
+  .historicoTableContainer {
+    min-height: 500px;
+    max-width: 100%;
+    background-color: #DFD6CA;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: visible;
+    overflow-x: auto; /* Isso permite a rolagem horizontal */
+    
+  }
+
+  /* Defina larguras fixas para cada coluna */
+  .historicoTable th:nth-child(1),
+  .historicoTable td:nth-child(1) {
+    width: 30%;
+    /* Largura para a coluna de imagem */
+  }
+
+  .historicoTable th:nth-child(2),
+  .historicoTable td:nth-child(2) {
+    width: 40%;
+    /* Largura para a coluna de nome */
+  }
+
+  .historicoTable th:nth-child(3),
+  .historicoTable td:nth-child(3) {
+    width: 10%;
+    /* Largura para a coluna de preço */
+  }
+
+  .historicoTable th:nth-child(4),
+  .historicoTable td:nth-child(4) {
+    width: 20%;
+    /* Largura para a coluna de quantidade */
+  }
+
+
+
+  .historicoTable {
+    border-collapse: collapse;
+    table-layout: fixed;
+    min-width: 100%;
+    color: #292929;
+    table-layout: fixed;
+    min-width: 800px; /* Define uma largura mínima para a tabela */
+  }
+
+  .historicoTable th {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 5px solid rgba(161, 133, 97, 0.5);
+    color: #292929;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+  }
+
+  .historicoTable td {
+    text-align: center;
+    border-bottom: 5px solid rgba(161, 133, 97, 0.5);
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #292929;
+  }
+
+
+
+  .historicoTable tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+  }
+
+  .emptyMessage {
+    text-align: center;
+    width: 100%;
+    font-size: 18px;
+    color: #666;
+    margin-top: 20px;
+  }
+
+  /* Estilos para o modal de detalhes (se necessário) */
+  .modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  .modal {
+    position: relative;
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .modal h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+  }
+
+  .modal .form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .modal .form input,
+  .modal .form textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+  }
+
+  .modal .form textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  .modal .form button[type="submit"] {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+
+  .modal .form button[type="submit"]:hover {
+    background-color: #218838;
+  }
+
+  .closeIcon {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #666;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+
+  .closeIcon:hover {
+    color: #333;
+  }
+
+  /* Estilos para os botões dinâmicos no modal de detalhes */
+  .modalButtons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+
+  .editarButton {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+
+  .editarButton:hover {
+    background-color: #0056b3;
+  }
+
+  .salvarButton {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+
+  .salvarButton:hover {
+    background-color: #218838;
+  }
+
+  .excluirButton {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+
+  .excluirButton:hover {
+    background-color: #c82333;
+  }
+
+
+  /* Estilo do ícone de perfil */
+  .profileIcon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #007bff;
+    color: white;
+    font-size: 20px;
+  }
+
+  .profileIcon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Estilo do modal de perfil */
+  .profileInfo {
+    text-align: center;
+  }
+
+  .profileImage {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+  }
+
+  .logoutButton {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    width: 100%;
+  }
+
+  .logoutButton:hover {
+    background-color: #c82333;
+  }
+
+  /* Estilo para o contêiner da paginação */
+  .paginacao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    gap: 10px;
+    flex-wrap: wrap;
+    /* Permite que os botões quebrem para a próxima linha em telas pequenas */
+  }
+
+  /* Estilo para os botões de paginação */
+  .paginacao button {
+    padding: 8px 12px;
+    border: 1px solid #A18561;
+    background-color: transparent;
+    color: #A18561;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+  }
+
+  /* Efeito hover para os botões */
+  .paginacao button:hover {
+    background-color: #A18561;
+    color: white;
+    box-shadow: 0 4px 8px #A18561;
+  }
+
+  /* Estilo para o botão da página ativa */
+  .paginacao button.activePage {
+    background-color: #A18561;
+    color: white;
+    box-shadow: 0 4px 8px #A18561;
+  }
+
+  /* Efeito hover para o botão da página ativa */
+  .paginacao button.activePage:hover {
+    background-color: #A18561;
+    border-color: #A18561;
+    box-shadow: 0 4px 8px #A18561;
+  }
+
+  /* Estilo para os botões de navegação (< e >) */
+  .paginacao button.navButton {
+    font-size: 16px;
+    /* Tamanho maior para os botões de navegação */
+  }
+
+  /* Estilo para botões desabilitados */
+  .paginacao button:disabled {
+    background-color: #e9ecef;
+    color: #6c757d;
+    border-color: #dee2e6;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+
+  /* Estilo para os pontos de elipse (...) */
+  .paginacao span {
+    padding: 8px 12px;
+    color: #6c757d;
+    font-size: 14px;
+  }
+
+
+
+
+  /* Footer */
+  .footer {
+    background-color: #A18561;
+    color: white;
+    display: flex;
+    /* Ativa Flexbox */
+    justify-content: center;
+    /* Alinhamento horizontal */
+    align-items: center;
+    /* Alinhamento vertical */
+    height: 100px;
+    padding: 15px;
+    text-align: center;
+    /* Garante que o texto dentro do parágrafo fique centralizado */
+  }
+}

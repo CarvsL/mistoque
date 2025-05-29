@@ -1,0 +1,841 @@
+@import url('https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap');
+
+* {
+  
+}
+
+@media (min-width: 1000px) {
+
+  
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* Menu mobile - escondido por padrão */
+.mobileNav {
+  display: none;
+}
+
+.menuIcon {
+  display: none;
+}
+
+  
+.container {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Tilt Warp', cursive;
+  font-weight: lighter;
+    
+
+  }
+
+  .fundo {
+    position: relative;
+    background-color: #DFD6CA;
+  
+  }
+
+  .fundo::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../../public/fundo.png'); /* Substitua pelo caminho da sua imagem */
+    background-size:contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 1; /* Ajuste a opacidade conforme necessário */
+    z-index: 0; /* Garante que fique atrás de todo o conteúdo */
+    pointer-events: none; /* Permite interação com elementos acima */
+}
+
+.seues, .vejac, .column h3, .textContent span, .columnImage, .videoContainer {
+  position: relative; /* Necessário para z-index funcionar */
+  z-index: 1; /* Fica na frente do fundo */
+}
+  
+  .header {
+    background-color: #A18561;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 175px;
+  }
+  
+  .logo {
+    margin-left: 150px;
+    font-size: clamp(60px, 4vw, 5vw);
+    font-weight: lighter;
+    
+
+  }
+
+  .logo a {
+    color: white;
+    text-decoration: none;
+  }
+
+  .icon {
+    width: clamp(90px, 6vw, 8vw); 
+    height: auto;
+    margin-right: 30px; 
+    vertical-align: middle;
+  }
+  
+  .navLinks {
+    list-style: none;
+    display: flex;
+    flex-direction: column; 
+    font-size: clamp(16px, 2vw, 2.5vw);
+    gap: 10px;
+    margin-right: 150px;
+    align-items: center; 
+  }
+  
+  .navLinks a {
+    color: white;
+    display: inline-block;
+    text-decoration: none;
+    transition: transform 0.3s ease-in-out; /* Transição suave */
+  }
+  
+  .navLinks a:hover {
+    transform: scale(1.1); /* Aumenta o tamanho do link em 10% */
+  }
+  
+
+
+  
+  .hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: #DFD6CA;
+    z-index: 1;
+    
+  }
+
+  .seues {
+    color: #A18561;
+    font-weight: lighter;
+    font-size: clamp(30px, 2vw, 2vw); 
+    margin-left: 150px;
+    margin-right: 150px;
+  }
+
+  .cordois {
+    color: rgb(255, 255, 255); /* Cor desejada */
+    text-shadow:
+      -1px -1px 0 #A18561,
+       1px -1px 0 #A18561,
+      -1px  1px 0 #A18561,
+       1px  1px 0 #A18561;
+  }
+  
+  
+
+  .vejac {
+    font-size: clamp(0px, 3vw, 3vw); 
+    color: #A18561;
+    text-align: center;
+  }
+
+
+/* Estilos para os dois containers lado a lado */
+.twoColumns {
+    display: flex;
+    background-color: #DFD6CA;
+    
+}
+
+.column {
+    padding: 0px 30px;
+    border-radius: 10px;
+    background-color: #DFD6CA;
+    flex: 1;   
+    display: flex;
+    flex-direction: column;
+    
+}
+
+
+
+.contentWrapper {
+    padding-top: 40px;
+    display: flex;
+   
+    gap: 50px;
+    justify-content: center;
+    
+}
+
+
+
+.column h3 {
+    color: #A18561;
+    font-size: clamp(20px, 2.5vw, 2.5vw); 
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+.textContent {
+    padding-top: 10px; 
+    
+}
+
+.textContent span {
+    color: #555;
+    font-size: clamp(2px, 1.5vw, 1.5vw); 
+    line-height: 1.0;
+    display: block; 
+    
+}
+
+.columnImage {
+    width: clamp(1px, 8vw, 8vw); 
+    height: auto;
+    object-fit: contain;
+}
+
+
+.videoContainer {
+  margin-top: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.video {
+  max-width: 100%;
+  height: auto;
+  border-radius: 50px;
+ 
+}
+
+.whatsContainer{
+  padding-top: 100px;
+}
+.whats {
+  display: block;
+  margin: 50px auto 150px auto;
+  width: 400px; 
+  height: auto;
+}
+ 
+ 
+ 
+  
+  
+  /* Footer */
+.footer {
+  background-color: #A18561;
+  color: white;
+  display: flex;                  /* Ativa Flexbox */
+  justify-content: center;        /* Alinhamento horizontal */
+  align-items: center;           /* Alinhamento vertical */
+  height: 100px;
+  padding: 15px;
+  text-align: center;            /* Garante que o texto dentro do parágrafo fique centralizado */
+}
+}
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+
+@media (min-width: 701px) and (max-width: 1000px) {
+  body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* Menu mobile - escondido por padrão */
+.mobileNav {
+  display: none;
+}
+
+.menuIcon {
+  display: none;
+}
+
+  
+.container {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Tilt Warp', cursive;
+  font-weight: lighter;
+    
+
+  }
+
+  .fundo {
+    position: relative;
+    background-color: #DFD6CA;
+  
+  }
+
+  .fundo::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../../public/fundo.png'); /* Substitua pelo caminho da sua imagem */
+    background-size:contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 1; /* Ajuste a opacidade conforme necessário */
+    z-index: 0; /* Garante que fique atrás de todo o conteúdo */
+    pointer-events: none; /* Permite interação com elementos acima */
+}
+
+.seues, .vejac, .column h3, .textContent span, .columnImage, .videoContainer {
+  position: relative; /* Necessário para z-index funcionar */
+  z-index: 1; /* Fica na frente do fundo */
+}
+  
+  .header {
+    background-color: #A18561;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 150px;
+  }
+  
+  .logo {
+    margin-left: 100px;
+    font-size: clamp(40px, 5vw, 5vw);
+    font-weight: lighter;
+    
+
+  }
+  .logo a {
+    color: white;
+    text-decoration: none;
+  }
+
+  .icon {
+    width: clamp(60px, 8vw, 8vw); 
+    height: auto;
+    margin-right: 20px; 
+    vertical-align: middle;
+  }
+  
+  .navLinks {
+    list-style: none;
+    display: flex;
+    flex-direction: column; 
+    font-size: clamp(20px, 2.5vw, 2.5vw);
+    gap: 10px;
+    margin-right: 100px;
+    align-items: center; 
+  }
+  
+  .navLinks a {
+    color: white;
+    display: inline-block;
+    text-decoration: none;
+    transition: transform 0.3s ease-in-out; /* Transição suave */
+  }
+  
+  .navLinks a:hover {
+    transform: scale(1.1); /* Aumenta o tamanho do link em 10% */
+  }
+  
+
+
+  
+  .hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: #DFD6CA;
+    z-index: 1;
+    
+  }
+
+  .seues {
+    color: #A18561;
+    font-weight: lighter;
+    font-size: clamp(25px, 2vw, 2vw); 
+    margin-left: 100px;
+    margin-right: 100px;
+  }
+
+  .cordois {
+    color: rgb(255, 255, 255); /* Cor desejada */
+    text-shadow:
+      -1px -1px 0 #A18561,
+       1px -1px 0 #A18561,
+      -1px  1px 0 #A18561,
+       1px  1px 0 #A18561;
+  }
+
+  .vejac {
+    font-size: clamp(30px, 3vw, 3vw); 
+    color: #A18561;
+    text-align: center;
+  }
+
+
+/* Estilos para os dois containers lado a lado */
+.twoColumns {
+    display: flex;
+    background-color: #DFD6CA;
+    
+}
+
+.column {
+    padding: 0px 30px;
+    border-radius: 10px;
+    background-color: #DFD6CA;
+    flex: 1;   
+    display: flex;
+    flex-direction: column;
+    
+}
+
+
+
+.contentWrapper {
+    padding-top: 40px;
+    display: flex;
+    gap: 19px;
+    justify-content: center;
+    
+}
+
+
+
+.column h3 {
+    color: #A18561;
+    font-size: clamp(20px, 2.5vw, 2.5vw); 
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+.textContent {
+    padding-top: 10px; 
+    
+}
+
+.textContent span {
+    color: #555;
+    font-size: clamp(13px, 1.5vw, 1.5vw); 
+    line-height: 1.0;
+    display: block; 
+    
+}
+
+.columnImage {
+    width: clamp(80px, 8vw, 8vw); 
+    height: auto;
+    object-fit: contain;
+}
+
+
+.videoContainer {
+  margin-top: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.video {
+  max-width: 100%;
+  height: auto;
+  border-radius: 50px;
+ 
+}
+
+.whatsContainer{
+  padding-top: 100px;
+}
+.whats {
+  display: block;
+  margin: 50px auto 150px auto;
+  width: 400px; 
+  height: auto;
+}
+ 
+ 
+ 
+  
+  
+  /* Footer */
+.footer {
+  background-color: #A18561;
+  color: white;
+  display: flex;                  /* Ativa Flexbox */
+  justify-content: center;        /* Alinhamento horizontal */
+  align-items: center;           /* Alinhamento vertical */
+  height: 100px;
+  padding: 15px;
+  text-align: center;            /* Garante que o texto dentro do parágrafo fique centralizado */
+}
+}
+
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+
+
+@media   (max-width: 700px) {
+
+  .menuIcon {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.bar {
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    border-radius: 3px;
+}
+
+.desktopNav {
+    display: none;
+  }
+
+.navLinks {
+  width: 100%;
+  max-height: 0;
+  background-color: #A18561;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  padding: 0;
+  transition: max-height 0.4s ease-in-out, padding 0.3s ease;
+  list-style: none;
+}
+
+.mobileNav {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  background-color: #A18561;
+}
+
+/* Estilos do menu móvel */
+.mobileNavLinks {
+  width: 100%;
+  max-height: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  transition: max-height 0.4s ease;
+}
+
+.mobileNavLinks.showMenu {
+  max-height: 200px;
+  padding: 15px 0;
+}
+
+.mobileNavLinks a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+
+.mobileNavContainer {
+  width: 100%;
+  overflow: hidden;
+}
+
+.navLinks.showMenu {
+  max-height: 150px; /* Ajuste conforme necessário */
+  padding: 15px 0;
+  margin: 0
+}
+
+
+/* Esconde o menu normal em mobile */
+.navLinks:not(.showMenu) {
+    display: none;
+}
+
+.navLinks a {
+  color: white;
+  text-decoration: none;
+  font-size: clamp(16px, 4vw, 18px);
+  
+}
+
+.navLinks a:hover {
+  transform: scale(1.1); /* Aumenta o tamanho do link em 10% */
+}
+
+
+  body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+.container {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Tilt Warp', cursive;
+  font-weight: lighter;
+    
+
+  }
+
+  .fundo {
+    position: relative;
+    background-color: #DFD6CA;
+  
+  }
+
+  .fundo::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../../public/fundo.png'); /* Substitua pelo caminho da sua imagem */
+    background-size:contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 1; /* Ajuste a opacidade conforme necessário */
+    z-index: 0; /* Garante que fique atrás de todo o conteúdo */
+    pointer-events: none; /* Permite interação com elementos acima */
+}
+
+.seues, .vejac, .column h3, .textContent span, .columnImage, .videoContainer {
+  position: relative; /* Necessário para z-index funcionar */
+  z-index: 1; /* Fica na frente do fundo */
+}
+  
+  .header {
+    background-color: #A18561;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    justify-content: space-between;
+  }
+  
+  .logo {
+    margin-left: 20px;
+    font-size: clamp(30px, 5vw, 5vw);
+    font-weight: lighter;
+    
+
+  }
+  .logo a {
+    color: white;
+    text-decoration: none;
+  }
+
+  .icon {
+    width: clamp(40px, 8vw, 8vw); 
+    height: auto;
+    margin-right: 10px; 
+    vertical-align: middle;
+  }
+  
+ 
+  
+  
+
+
+  
+  .hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: #DFD6CA;
+    z-index: 1;
+    margin-top: 0;
+    transition: margin-top 0.3s ease;
+    
+  }
+
+  .navLinks.showMenu + .fundo .hero {
+    margin-top: 20px;
+  }
+
+  .seues {
+    color: #A18561;
+    font-weight: lighter;
+    font-size: clamp(24px, 2vw, 2vw); 
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+
+  .cordois {
+    color: rgb(255, 255, 255); /* Cor desejada */
+    text-shadow:
+      -1px -1px 0 #A18561,
+       1px -1px 0 #A18561,
+      -1px  1px 0 #A18561,
+       1px  1px 0 #A18561;
+  }
+
+  .vejac {
+    font-size: clamp(35px, 3vw, 3vw); 
+    color: #A18561;
+    text-align: center;
+    padding-top: 30px;
+  }
+
+
+/* Estilos para os dois containers lado a lado */
+.twoColumns {
+    display: flex;
+    background-color: #DFD6CA;
+    flex-direction: column;
+    
+}
+
+.column {
+    padding: 0px 30px;
+    border-radius: 10px;
+    background-color: #DFD6CA;
+    flex: 1;   
+    display: flex;
+    flex-direction: column;
+    
+}
+
+
+
+.contentWrapper {
+    padding-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 19px;
+    justify-content: center;
+    
+    
+}
+
+
+
+.column h3 {
+    color: #A18561;
+    font-size: clamp(24px, 2.5vw, 2.5vw); 
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+.textContent {
+    padding-top: 0px; 
+    
+}
+
+.textContent span {
+    color: #555;
+    font-size: clamp(15px, 1.5vw, 1.5vw); 
+    text-align: center;
+    line-height: 1.0;
+    display: block; 
+    
+}
+
+.columnImage {
+    width: clamp(80px, 8vw, 8vw); 
+    height: auto;
+    object-fit: contain;
+    text-align: center;
+    display: block;          
+    margin-left: auto;       
+    margin-right: auto;      
+    margin-bottom: 10px;     
+    
+}
+
+
+.videoContainer {
+  margin-top: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 50px;
+}
+
+.video {
+  max-width: 100%;
+  height: auto;
+  
+ 
+}
+
+.whatsContainer{
+  padding-top: 100px;
+}
+.whats {
+  display: block;
+  margin: 50px auto 150px auto;
+  width: 300px; 
+  height: auto;
+}
+ 
+ 
+ 
+  
+  
+  /* Footer */
+.footer {
+  background-color: #A18561;
+  color: white;
+  display: flex;                  /* Ativa Flexbox */
+  justify-content: center;        /* Alinhamento horizontal */
+  align-items: center;           /* Alinhamento vertical */
+  height: 100px;
+  padding: 15px;
+  text-align: center;            /* Garante que o texto dentro do parágrafo fique centralizado */
+}
+}

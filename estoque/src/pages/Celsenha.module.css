@@ -1,0 +1,798 @@
+@import url('https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap');
+
+* {
+  
+}
+
+@media (min-width: 1000px) {
+
+  .phoneInput input {
+    border: none !important;
+    outline: none !important;
+    background-color: #f9f9f9;
+    font-size: 16px;
+    
+  }
+
+  .phoneInput {
+    width: 100%;
+    padding: 14px 10px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    color: #333;
+    box-sizing: border-box;
+  }
+
+  .phoneInput:focus-within {
+    outline: 2px solid #A18561; /* Mesmo estilo dos outros inputs */
+    border-color: #A18561;
+  }
+
+  
+
+
+  .mobileNav {
+    display: none;
+  }
+
+  .menuIcon {
+    display: none;
+  }
+
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Tilt Warp', cursive;
+  font-weight: lighter;
+
+
+  }
+
+  .loginContainer {
+    z-index: 1;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .header {
+    background-color: #A18561;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 175px;
+  }
+
+  .logo {
+    margin-left: 150px;
+    font-size: clamp(60px, 4vw, 5vw);
+    font-weight: lighter;
+
+
+  }
+
+  .icon {
+    width: clamp(90px, 6vw, 8vw);
+    height: auto;
+    margin-right: 30px;
+    vertical-align: middle;
+  }
+
+  .navLinks {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    font-size: clamp(16px, 2vw, 2.5vw);
+    gap: 10px;
+    margin-right: 150px;
+    align-items: center;
+  }
+
+  .navLinks a {
+    color: white;
+    display: inline-block;
+    text-decoration: none;
+    transition: transform 0.3s ease-in-out;
+    /* Transição suave */
+  }
+
+  .navLinks a:hover {
+    transform: scale(1.1);
+    /* Aumenta o tamanho do link em 10% */
+  }
+
+  .fundo {
+    min-height: 62vh;
+    position: relative;
+    background-color: #DFD6CA;
+    align-items: center;
+
+    display: flex;
+    justify-content: center;
+
+  }
+
+  .fundo::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../../public/fundo.png');
+    /* Substitua pelo caminho da sua imagem */
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.6;
+    /* Ajuste a opacidade conforme necessário */
+    z-index: 0;
+    /* Garante que fique atrás de todo o conteúdo */
+    pointer-events: none;
+    /* Permite interação com elementos acima */
+  }
+
+
+
+
+  .loginTitulo {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+  }
+
+  .loginFormulario {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .loginCampo {
+    margin-bottom: 15px;
+  }
+
+  .loginInput {
+    width: 100%;
+    padding: 14px 10px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #333;
+    box-sizing: border-box;
+  }
+
+  .loginBotao {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #A18561;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+
+  .loginBotao:hover {
+    background-color: #292929;
+  }
+
+  .loginBotaoSecundario {
+    background-color: #A18561;
+
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+
+  .loginBotaoSecundario:hover {
+    background-color: #292929;
+  }
+
+  /* Footer */
+  .footer {
+    background-color: #A18561;
+    color: white;
+    display: flex;
+    /* Ativa Flexbox */
+    justify-content: center;
+    /* Alinhamento horizontal */
+    align-items: center;
+    /* Alinhamento vertical */
+    height: 150px;
+    padding: 15px;
+    text-align: center;
+    /* Garante que o texto dentro do parágrafo fique centralizado */
+  }
+
+  .registerBotaoSecundario {
+    padding: 12px 0;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #6c757d;
+    cursor: pointer;
+    margin-top: 10px;
+
+  }
+
+  .registerBotaoSecundario:hover {
+    background-color: #292929;
+  }
+
+  .loginInput:focus {
+    outline: 2px solid #A18561; /* Mesmo estilo dos outros inputs */
+    border-color: #A18561;
+  }
+}
+
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+
+@media (min-width: 701px) and (max-width: 1000px) {
+
+  .phoneInput input {
+    border: none !important;
+    outline: none !important;
+    background-color: #f9f9f9;
+    font-size: 16px;
+    
+  }
+
+  .phoneInput {
+    width: 100%;
+    padding: 14px 10px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    color: #333;
+    box-sizing: border-box;
+  }
+
+  .phoneInput:focus-within {
+    outline: 2px solid #A18561; /* Mesmo estilo dos outros inputs */
+    border-color: #A18561;
+  }
+
+
+
+  .mobileNav {
+    display: none;
+  }
+
+  .menuIcon {
+    display: none;
+  }
+
+
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Tilt Warp', cursive;
+  font-weight: lighter;
+
+
+  }
+
+  .loginContainer {
+    z-index: 1;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .header {
+    background-color: #A18561;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 150px;
+  }
+
+  .logo {
+    margin-left: 100px;
+    font-size: clamp(40px, 5vw, 5vw);
+    font-weight: lighter;
+
+
+  }
+
+  .icon {
+    width: clamp(60px, 8vw, 8vw);
+    height: auto;
+    margin-right: 20px;
+    vertical-align: middle;
+  }
+
+  .navLinks {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    font-size: clamp(20px, 2.5vw, 2.5vw);
+    gap: 10px;
+    margin-right: 100px;
+    align-items: center;
+  }
+
+  .navLinks a {
+    color: white;
+    display: inline-block;
+    text-decoration: none;
+    transition: transform 0.3s ease-in-out;
+    /* Transição suave */
+  }
+
+  .navLinks a:hover {
+    transform: scale(1.1);
+    /* Aumenta o tamanho do link em 10% */
+  }
+
+
+  .fundo {
+    min-height: 65vh;
+    position: relative;
+    background-color: #DFD6CA;
+    align-items: center;
+
+    display: flex;
+    justify-content: center;
+
+  }
+
+  .fundo::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../../public/fundo.png');
+    /* Substitua pelo caminho da sua imagem */
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.6;
+    /* Ajuste a opacidade conforme necessário */
+    z-index: 0;
+    /* Garante que fique atrás de todo o conteúdo */
+    pointer-events: none;
+    /* Permite interação com elementos acima */
+  }
+
+
+
+
+  .loginTitulo {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+  }
+
+  .loginFormulario {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .loginCampo {
+    margin-bottom: 15px;
+  }
+
+  .loginInput {
+    width: 100%;
+    padding: 14px 10px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #333;
+    box-sizing: border-box;
+  }
+
+  .loginBotao {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #A18561;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+
+  .loginBotao:hover {
+    background-color: #292929;
+  }
+
+  .loginBotaoSecundario {
+    background-color: #A18561;
+
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+
+  .loginBotaoSecundario:hover {
+    background-color: #292929;
+  }
+
+  /* Footer */
+  .footer {
+    background-color: #A18561;
+    color: white;
+    display: flex;
+    /* Ativa Flexbox */
+    justify-content: center;
+    /* Alinhamento horizontal */
+    align-items: center;
+    /* Alinhamento vertical */
+    height: 150px;
+    padding: 15px;
+    text-align: center;
+    /* Garante que o texto dentro do parágrafo fique centralizado */
+  }
+
+  .registerBotaoSecundario {
+    padding: 12px 0;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #6c757d;
+    cursor: pointer;
+    margin-top: 10px;
+
+  }
+
+  .registerBotaoSecundario:hover {
+    background-color: #292929;
+  }
+
+  .loginInput:focus {
+    outline: 2px solid #A18561; /* Mesmo estilo dos outros inputs */
+    border-color: #A18561;
+  }
+}
+
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////*/
+
+
+@media (max-width: 700px) {
+
+  .phoneInput input {
+    border: none !important;
+    outline: none !important;
+    background-color: #f9f9f9;
+    font-size: 16px;
+    
+  }
+
+  .phoneInput {
+    width: 100%;
+    padding: 14px 10px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    color: #333;
+    box-sizing: border-box;
+  }
+
+  .phoneInput:focus-within {
+    outline: 2px solid #A18561; /* Mesmo estilo dos outros inputs */
+    border-color: #A18561;
+  }
+
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Tilt Warp', cursive;
+  font-weight: lighter;
+
+
+  }
+
+  .loginContainer {
+    z-index: 1;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .header {
+    background-color: #A18561;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    justify-content: space-between;
+  }
+
+  .logo {
+    margin-left: 20px;
+    font-size: clamp(30px, 5vw, 5vw);
+    font-weight: lighter;
+
+
+  }
+
+  .icon {
+    width: clamp(40px, 8vw, 8vw);
+    height: auto;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+
+
+
+  .menuIcon {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+    margin-right: 20px;
+  }
+
+  .bar {
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    border-radius: 3px;
+  }
+
+  .desktopNav {
+    display: none;
+  }
+
+  .navLinks {
+    width: 100%;
+    max-height: 0;
+    background-color: #A18561;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 0;
+    transition: max-height 0.4s ease-in-out, padding 0.3s ease;
+    list-style: none;
+  }
+
+  .mobileNav {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    background-color: #A18561;
+  }
+
+  /* Estilos do menu móvel */
+  .mobileNavLinks {
+    width: 100%;
+    max-height: 0;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    transition: max-height 0.4s ease;
+  }
+
+  .mobileNavLinks.showMenu {
+    max-height: 200px;
+    padding: 15px 0;
+  }
+
+  .mobileNavLinks a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+  }
+
+
+  .mobileNavContainer {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .navLinks.showMenu {
+    max-height: 150px;
+    /* Ajuste conforme necessário */
+    padding: 15px 0;
+    margin: 0
+  }
+
+
+  /* Esconde o menu normal em mobile */
+  .navLinks:not(.showMenu) {
+    display: none;
+  }
+
+  .navLinks a {
+    color: white;
+    text-decoration: none;
+    font-size: clamp(16px, 4vw, 18px);
+
+  }
+
+  .navLinks a:hover {
+    transform: scale(1.1);
+    /* Aumenta o tamanho do link em 10% */
+  }
+
+
+  .fundo {
+    min-height: 70vh;
+    position: relative;
+    background-color: #DFD6CA;
+    align-items: center;
+
+    display: flex;
+    justify-content: center;
+
+  }
+
+  .fundo::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../../public/fundo.png');
+    /* Substitua pelo caminho da sua imagem */
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.6;
+    /* Ajuste a opacidade conforme necessário */
+    z-index: 0;
+    /* Garante que fique atrás de todo o conteúdo */
+    pointer-events: none;
+    /* Permite interação com elementos acima */
+  }
+
+
+
+
+  .loginTitulo {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+  }
+
+  .loginFormulario {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .loginCampo {
+    margin-bottom: 15px;
+  }
+
+  .loginInput {
+    width: 100%;
+    padding: 14px 10px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #333;
+    box-sizing: border-box;
+  }
+
+  .loginBotao {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #A18561;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+
+  .loginBotao:hover {
+    background-color: #292929;
+  }
+
+  .loginBotaoSecundario {
+    background-color: #A18561;
+
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+
+  .loginBotaoSecundario:hover {
+    background-color: #292929;
+  }
+
+  /* Footer */
+  .footer {
+    background-color: #A18561;
+    color: white;
+    display: flex;
+    /* Ativa Flexbox */
+    justify-content: center;
+    /* Alinhamento horizontal */
+    align-items: center;
+    /* Alinhamento vertical */
+    height: 150px;
+    padding: 15px;
+    text-align: center;
+    /* Garante que o texto dentro do parágrafo fique centralizado */
+  }
+
+  .registerBotaoSecundario {
+    padding: 12px 0;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #6c757d;
+    cursor: pointer;
+    margin-top: 10px;
+
+  }
+
+  .registerBotaoSecundario:hover {
+    background-color: #292929;
+  }
+
+  .loginInput:focus {
+    outline: 2px solid #A18561; /* Mesmo estilo dos outros inputs */
+    border-color: #A18561;
+  }
+}

@@ -1,0 +1,740 @@
+@import url('https://fonts.cdnfonts.com/css/helvetica-255');
+
+* {
+  
+}
+
+
+.container {
+  display: flex;
+  flex-direction: column;
+  /*background-color: rgba(122, 146, 146, 0.6); */
+  font-family: 'Helvetica', Arial, sans-serif !important;
+  font-weight: lighter;
+
+  min-height: 770px;
+  
+}
+
+.header {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  /*background-color: rgba(122, 146, 146, 1); /* 0.5 = 50% de opacidade */
+
+}
+
+.titulo {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 20px;
+  
+
+}
+
+.filtrosCategorias {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 30px;
+  flex-direction: column;
+  gap: 10px;
+  /* espaçamento vertical entre os selects */
+}
+
+.categoriaItem {
+  padding: 8px 16px;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.selectCategoria2 {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  max-width: 700px;
+  min-width: 300px;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+  margin: 5px 10px 0px 10px;
+  font-family: 'Tilt Warp', cursive;
+  font-weight: lighter;
+
+}
+
+.selectCategoria2:focus {
+  outline: 2px solid #000000;
+  /* Mesmo estilo dos outros inputs */
+  border-color: #000000;
+
+}
+
+.categoriaItem:hover {
+  background-color: #e0e0e0;
+}
+
+.categoriaItem.ativo {
+  background-color: #007bff;
+  color: white;
+}
+
+.itensPorPaginaContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 10px 0;
+  gap: 10px;
+}
+
+.itensPorPaginaContainer label {
+  font-size: 14px;
+  color: #555;
+}
+
+.selectItensPorPagina {
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.produtoscontainer {
+  margin: 10px 10px;
+  z-index: 1;
+
+
+}
+
+
+
+
+
+.produtosGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 150px));
+  justify-content: center;
+  /* centraliza os cards */
+  gap: 18px;
+  margin: 50px 100px 0 100px;
+  z-index: 1;
+
+
+}
+
+@media (max-width: 1230px) {
+  .produtosGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 150px));
+    justify-content: center;
+    /* centraliza os cards */
+    gap: 18px;
+    margin: 50px 50px;
+    z-index: 1;
+
+  }
+
+}
+
+@media (max-width: 622px) {
+  .produtosGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 150px));
+    justify-content: center;
+    /* centraliza os cards */
+    gap: 18px;
+    margin: 50px 5px;
+    z-index: 1;
+
+  }
+
+}
+
+
+
+
+
+
+
+
+.produtoCard {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  z-index: 1;
+  max-width: 150px;
+  border: 1px solid #e0e0e0;
+  /* Adiciona uma borda sutil */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  /* Opcional: ajusta a sombra para combinar */
+}
+
+.produtoCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1;
+}
+
+.produtoImagemContainer {
+  width: 100%;
+  height: 150px;
+  /* Altura reduzida */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f5f5;
+  overflow: hidden;
+}
+
+.produtoImagem {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  /* Mantém a proporção sem cortar */
+  padding: 10px;
+  /* Espaço ao redor da imagem */
+}
+
+
+.produtoCard:hover .produtoImagem {
+  transform: scale(1.05);
+}
+
+.imagemPadrao {
+  width: 100%;
+  height: 100%;
+  background-color: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+}
+
+.produtoInfo {
+  padding: 10px;
+  text-align: center;
+}
+
+.produtoNome {
+  font-size: 0.9rem;
+  margin: 5px 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-height: 3.6em;
+  /* Aproximadamente 3 linhas (1.2em por linha) */
+  line-height: 1.2em;
+  word-break: break-word;
+  /* Quebra palavras longas */
+  font-weight: bold;
+}
+
+
+.produtoPreco {
+  font-size: 1rem;
+  margin: 20px 0;
+  font-weight: bold;
+}
+
+
+
+
+.botaoComprar {
+  width: 100%;
+  padding: 10px;
+  
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+
+}
+
+
+.semProdutos {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #000000;
+  margin-top: 50px;
+  min-height: 400px;
+  z-index: 2;
+}
+
+/* Estilos do modal */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background: white;
+  border-radius: 10px;
+  width: 50vh;
+  max-width: 600px;
+  /* Largura máxima reduzida */
+  max-height: 90vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.modalContent2 {
+  background: rgb(219, 219, 219);
+  border-radius: 10px;
+  width: 50vh;
+  max-width: 600px;
+  /* Largura máxima reduzida */
+  max-height: 90vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding-top: 10px;
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+
+.modalClose {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #666;
+  z-index: 10;
+}
+
+.modalClose:hover {
+  color: #333;
+}
+
+.modalImagemContainer {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modalImagem {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.modalImagemPadrao {
+  width: 100%;
+  height: 100%;
+  background-color: #f5f5f5;
+}
+
+.modalInfo {
+  padding: 25px;
+}
+
+.modalTitulo {
+  font-size: 1.8rem;
+  margin: 0 0 10px 0;
+  color: #333;
+  word-wrap: break-word; /* Quebra palavras longas */
+  overflow-wrap: break-word; /* Recomendado para compatibilidade moderna */
+  white-space: normal; /* Permite quebra de linha */
+}
+
+
+.modalTitulo2 {
+  font-size: 1.8rem;
+  margin: 0 10px 10px 10px;
+  color: #333;
+  font-weight: bold;
+}
+
+.modalPreco {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #000000;
+  margin: 0 0 20px 0;
+}
+
+.modalDescricao {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 25px;
+  word-break: break-word;
+  white-space: pre-wrap;
+  /* Mantém quebras de linha do texto */
+  overflow-wrap: break-word;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.modalBotaoComprar {
+  padding: 12px 50px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease;
+}
+
+.modalBotaoComprar:hover {
+  background-color: #218838;
+}
+
+.loading,
+.error {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-top: 50px;
+}
+
+.error {
+  color: #dc3545;
+}
+
+/* Mantenha todos os estilos anteriores e adicione estes novos */
+
+.cabecalhoLoja {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.logoLojaContainer {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.logoLoja {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.logoPadrao {
+  width: 100%;
+  height: 100%;
+  background-color: #007bff;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.emailLoja {
+  font-size: 1.2rem;
+  color: #000000;
+  margin: 0;
+  font-weight: bold;
+}
+
+/* Estilos para a paginação */
+.paginacao {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  gap: 10px;
+  flex-wrap: wrap;
+  z-index: 1;
+  /* Remova o background-color fixo */
+}
+
+.paginacao button {
+  padding: 8px 12px;
+  color: var(--text-color, #000000);
+  border-color: var(--text-color, #000000);
+  border: 1px solid #e0e0e0; /* Cor mais suave - cinza bem claro */
+  background-color: #ffffff;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+
+}
+
+.paginacao button:hover {
+  background-color: #ffffff;
+  z-index: 1;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-color: #c0c0c0;
+}
+
+.paginacao button:disabled {
+  background-color: #b0b1b3;
+  opacity: 0.6;
+  color: var(--text-color, #000000);
+  border-color: #a7a8aa;
+  cursor: not-allowed;
+  box-shadow: none;
+  z-index: 1;
+}
+
+.paginacao button.activePage {
+  background-color: var(--cor-dinamica, #7a9292);
+  border-color: transparent;
+  z-index: 1;
+}
+
+.paginacao button.activePage:hover {
+  background-color: var(--cor-dinamica, #7a9292);
+  /* Usa a cor dinâmica com fallback */
+  z-index: 1;
+}
+
+.paginacao button.navButton {
+  font-size: 16px;
+}
+
+
+
+.paginacao span {
+  padding: 8px 12px;
+  color: #ffffff;
+  font-size: 14px;
+}
+
+/* Estilos existentes permanecem os mesmos */
+
+/* Estilos do Carrinho */
+.carrinhoIcone {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #28a745;
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+  z-index: 999;
+  transition: all 0.3s ease;
+}
+
+.carrinhoIcone:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.contadorCarrinho {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: #ff5722;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 1);
+  color: white;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.listaCarrinho {
+  max-height: 400px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+  padding-right: 10px;
+}
+
+.itemCarrinho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 10px;
+}
+
+.infoItem {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+}
+
+.nomeItem {
+  word-break: break-word;
+
+  margin-bottom: 5px;
+}
+
+.precoItem {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.controlesQuantidade {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.controlesQuantidade button {
+  width: 25px;
+  height: 25px;
+  border: 1px solid #ddd;
+  background: #f5f5f5;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.controlesQuantidade button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.subtotalItem {
+  flex: 1;
+  text-align: right;
+  font-weight: bold;
+}
+
+.removerItem {
+  margin-left: 10px;
+  background: transparent;
+  border: none;
+  color: #ff5722;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.totalCarrinho {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 5px 10px 5px;
+  border-top: 2px solid #eee;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.botaoFinalizar {
+  width: 100%;
+  padding: 20px;
+  
+  
+
+  
+  background-color: #28a745;
+  color: white;
+  border: none;
+  
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease;
+}
+
+.botaoFinalizar:hover {
+  background-color: #218838;
+}
+
+.botaoFinalizar:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+
+
+/* Se quiser estilizar os selects lado a lado */
+.filtrosCategorias {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+/* Footer */
+.footer {
+  /*background-color: rgba(122, 146, 146, 1); /* 0.5 = 50% de opacidade */
+  color: rgb(0, 0, 0);
+  display: flex;
+  /* Ativa Flexbox */
+  justify-content: center;
+  /* Alinhamento horizontal */
+  align-items: center;
+  /* Alinhamento vertical */
+  height: 100px;
+  padding: 15px;
+  text-align: center;
+  /* Garante que o texto dentro do parágrafo fique centralizado */
+}
+
+.fundo {
+  position: relative;
+  background-color: transparent;
+  align-items: center;
+  flex-direction: column;
+  /* Organiza os elementos verticalmente */
+  align-items: center;
+  z-index: 1;
+  min-height: 600px;
+
+
+}
+
+
+.fundo::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('../../public/fundo2.png');
+  /* Substitua pelo caminho da sua imagem */
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 1;
+  /* Ajuste a opacidade conforme necessário */
+  z-index: -1;
+  /* Garante que fique atrás de todo o conteúdo */
+  pointer-events: none;
+  /* Permite interação com elementos acima */
+}
