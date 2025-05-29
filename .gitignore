@@ -35,4 +35,20 @@ logs
 pids
 *.pid
 *.seed
-*.pid.lock 
+*.pid.lock
+
+# SSL Certificates
+*.pem
+*.key
+*.crt
+
+# Uploads
+/backend/uploads/
+
+# Database
+*.sqlite
+*.db
+
+# Sensitive files
+config.js
+secrets.json 
