@@ -72,7 +72,7 @@ export default function Code() {
     try {
       setPodeReenviar(false); // Desabilita o botão imediatamente
 
-      const response = await fetch("http://localhost:5000/reenviar-codigo", {
+      const response = await fetch(`${import.meta.env.VITE_API_URL_HTTPS}/reenviar-codigo`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -118,7 +118,7 @@ export default function Code() {
     }
 
     try {
-      const response = await fetch("http://localhost:5000/verify-code", {
+      const response = await fetch(`${import.meta.env.VITE_API_URL_HTTPS}/verify-code`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

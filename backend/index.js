@@ -6,19 +6,24 @@ const bcrypt = require('bcryptjs');
 const cors = require('cors');
 const session = require('express-session');
 const fs = require('fs');
-const { v4: uuidv4 } = require('uuid'); // Importando UUID
+const { v4: uuidv4 } = require('uuid');
 const cron = require('node-cron');
 const moment = require('moment');
-const axios = require('axios'); // Adicione esta linha
-const rateLimit = require('express-rate-limit'); // Adicionar esta linha
+const axios = require('axios');
+const rateLimit = require('express-rate-limit');
 const https = require('https');
 const http = require('http');
 require('dotenv').config();
 
+// Constantes para URLs do Mercado Pago
+const MP_API_BASE_URL = 'https://api.mercadopago.com';
+const MP_PREAPPROVAL_URL = `${MP_API_BASE_URL}/preapproval`;
+const MP_PAYMENTS_URL = `${MP_API_BASE_URL}/v1/payments`;
+
 // Configuração dos rate limiters
 const loginLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutos
-  max: 15, // limite de 15 tentativas
+  windowMs: parseInt(process.env.RATE_LIMIT_WINDOW), // 15 minutos
+  max: parseInt(process.env.LOGIN_RATE_LIMIT_MAX), // limite de tentativas
   message: {
     success: false,
     message: 'Muitas tentativas de login. Tente novamente em 15 minutos.'
@@ -26,17 +31,17 @@ const loginLimiter = rateLimit({
 });
 
 const registerLimiter = rateLimit({
-  windowMs: 60 * 60 * 1000, // 1 hora
-  max: 3, // limite de 3 registros
+  windowMs: parseInt(process.env.RATE_LIMIT_WINDOW), // 15 minutos
+  max: parseInt(process.env.REGISTER_RATE_LIMIT_MAX), // limite de registros
   message: {
     success: false,
-    message: 'Limite de registros excedido. Tente novamente em 1 hora.'
+    message: 'Limite de registros excedido. Tente novamente mais tarde.'
   }
 });
 
 const verifyCodeLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutos
-  max: 5, // limite de 5 tentativas
+  windowMs: parseInt(process.env.RATE_LIMIT_WINDOW), // 15 minutos
+  max: parseInt(process.env.VERIFY_CODE_RATE_LIMIT_MAX), // limite de tentativas
   message: {
     success: false,
     message: 'Muitas tentativas de verificação. Tente novamente em 15 minutos.'
@@ -44,8 +49,8 @@ const verifyCodeLimiter = rateLimit({
 });
 
 const generalLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutos
-  max: 100, // limite de 100 requisições
+  windowMs: parseInt(process.env.RATE_LIMIT_WINDOW), // 15 minutos
+  max: parseInt(process.env.RATE_LIMIT_MAX_REQUESTS), // limite de requisições
   message: {
     success: false,
     message: 'Muitas requisições. Tente novamente em 15 minutos.'
@@ -57,18 +62,15 @@ const twilio = require('twilio');
 const twilioClient = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
 const TWILIO_PHONE_NUMBER = process.env.TWILIO_PHONE_NUMBER;
 
-// Store verification codes temporarily (in production, use Redis or similar)
-const verificationCodes = new Map();
-
 const app = express();
 
 // Configuração de CORS
 app.use(
   cors({
-    origin: ['http://localhost:5173', 'https://localhost:5173'],
+    origin: [process.env.FRONTEND_URL, process.env.FRONTEND_URL_HTTPS],
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization']
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-XSRF-TOKEN']
   })
 );
 
@@ -80,39 +82,57 @@ app.use(
     saveUninitialized: false,
     cookie: {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production', // Habilita apenas em produção
-      maxAge: 24 * 60 * 60 * 1000,
+      secure: process.env.NODE_ENV === 'production',
+      maxAge: parseInt(process.env.SESSION_EXPIRY),
       sameSite: 'strict'
     },
   })
 );
 
-// Middleware para JSON
-app.use(express.json());
-
 // Configuração do banco de dados
 const db = mysql.createPool({
   host: process.env.DB_HOST,
+  port: parseInt(process.env.DB_PORT),
   user: process.env.DB_USER,
   password: process.env.DB_PASS,
   database: process.env.DB_NAME,
+  ssl: process.env.DB_SSL === 'true' ? {
+    rejectUnauthorized: false
+  } : false
 });
 
-// Configuração do multer para salvar arquivos na pasta "uploads"
+// Configuração do multer para upload de arquivos
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, 'uploads/');
+    cb(null, process.env.UPLOAD_DIR);
   },
   filename: (req, file, cb) => {
-    const extensao = path.extname(file.originalname); // Extrai a extensão do arquivo
+    const extensao = path.extname(file.originalname);
     let nomeUnico;
     do {
-      nomeUnico = uuidv4() + extensao; // Gera um nome único com UUID
-    } while (fs.existsSync(path.join('uploads', nomeUnico))); // Verifica se o nome já existe
+      nomeUnico = uuidv4() + extensao;
+    } while (fs.existsSync(path.join(process.env.UPLOAD_DIR, nomeUnico)));
     cb(null, nomeUnico);
   },
 });
-const upload = multer({ storage });
+
+const upload = multer({
+  storage,
+  limits: {
+    fileSize: parseInt(process.env.MAX_FILE_SIZE)
+  },
+  fileFilter: (req, file, cb) => {
+    const allowedTypes = process.env.ALLOWED_FILE_TYPES.split(',');
+    if (allowedTypes.includes(file.mimetype)) {
+      cb(null, true);
+    } else {
+      cb(new Error('Tipo de arquivo não permitido'));
+    }
+  }
+});
+
+// Middleware para JSON
+app.use(express.json());
 
 // Middleware para verificar autenticação
 const verificarAutenticacao = (req, res, next) => {
@@ -756,15 +776,14 @@ const httpsPort = process.env.HTTPS_PORT || 5443;
 // Criar servidor HTTP (redirecionará para HTTPS)
 const httpServer = http.createServer((req, res) => {
   res.writeHead(301, { 
-    Location: `https://${req.headers.host.replace(httpPort, httpsPort)}${req.url}` 
+    Location: `https://${process.env.DOMAIN}:${httpsPort}${req.url}` 
   });
   res.end();
 });
 
 try {
-  // Em desenvolvimento, usa os certificados locais do mkcert
-  const privateKey = fs.readFileSync('./ssl/localhost+2-key.pem', 'utf8');
-  const certificate = fs.readFileSync('./ssl/localhost+2.pem', 'utf8');
+  const privateKey = fs.readFileSync(process.env.SSL_KEY_PATH, 'utf8');
+  const certificate = fs.readFileSync(process.env.SSL_CERT_PATH, 'utf8');
 
   const credentials = {
     key: privateKey,
@@ -775,7 +794,7 @@ try {
 
   // Iniciar servidor HTTPS
   httpsServer.listen(httpsPort, () => {
-    console.log(`Servidor HTTPS rodando em https://localhost:${httpsPort}`);
+    console.log(`Servidor HTTPS rodando em https://${process.env.DOMAIN}:${httpsPort}`);
   });
 
   // Iniciar servidor HTTP para redirecionamento
@@ -798,8 +817,8 @@ app.use(
     saveUninitialized: false,
     cookie: {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production', // Habilita apenas em produção
-      maxAge: 24 * 60 * 60 * 1000,
+      secure: process.env.NODE_ENV === 'production',
+      maxAge: parseInt(process.env.SESSION_EXPIRY),
       sameSite: 'strict'
     },
   })
@@ -940,7 +959,7 @@ app.get('/catalogo/link', verificarAutenticacao, async (req, res) => {
     }
 
     // Retorna o link único do catálogo usando HTTPS
-    const link = `https://localhost:5173/catalogo/${catalogoId}`;
+    const link = `${process.env.FRONTEND_URL_HTTPS}/catalogo/${catalogoId}`;
     res.status(200).send({ link });
   } catch (err) {
     console.error('Erro ao gerar link do catálogo:', err);
@@ -1412,7 +1431,6 @@ const preference = new Preference(client);
 app.post('/criar-pagamento', verificarAutenticacao, async (req, res) => {
   try {
     const { userId } = req.session;
-    const frontendUrl = 'https://577f-2804-7f0-3e6-1127-bd6d-1bb7-758b-df4d.ngrok-free.app';
 
     // Obter email do usuário
     const [user] = await db.execute('SELECT email_user FROM usuarios WHERE id = ?', [userId]);
@@ -1433,12 +1451,12 @@ app.post('/criar-pagamento', verificarAutenticacao, async (req, res) => {
         transaction_amount: 19.9,
         currency_id: "BRL"
       },
-      back_url: `${frontendUrl}/assinatura-sucesso`,
+      back_url: `${process.env.FRONTEND_URL_HTTPS}/assinatura-sucesso`,
       payer_email: user[0].email_user,
       external_reference: userId.toString()
     };
 
-    const response = await fetch('https://api.mercadopago.com/preapproval', {
+    const response = await fetch(MP_PREAPPROVAL_URL, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${accessToken}`,
@@ -1479,7 +1497,7 @@ app.post('/criar-pagamento', verificarAutenticacao, async (req, res) => {
 
 // No backend:
 app.get('/assinatura-sucesso', (req, res) => {
-  res.redirect('http://localhost:5173/produtos'); // ou /dashboard, / etc.
+  res.redirect(`${process.env.FRONTEND_URL_HTTPS}/produtos`);
 });
 
 
@@ -1540,7 +1558,7 @@ app.post('/webhook-mercadopago', async (req, res) => {
       const subscriptionId = data.id;
       console.log('Processando assinatura:', subscriptionId);
 
-      const response = await fetch(`https://api.mercadopago.com/preapproval/${subscriptionId}`, {
+      const response = await fetch(`${MP_PREAPPROVAL_URL}/${subscriptionId}`, {
         headers: { 'Authorization': `Bearer ${accessToken}` }
       });
 
@@ -1576,7 +1594,7 @@ app.post('/webhook-mercadopago', async (req, res) => {
       const paymentId = data.id;
       console.log('Processando pagamento:', paymentId);
 
-      const response = await fetch(`https://api.mercadopago.com/v1/payments/${paymentId}`, {
+      const response = await fetch(`${MP_PAYMENTS_URL}/${paymentId}`, {
         headers: { 'Authorization': `Bearer ${accessToken}` }
       });
 
@@ -1587,7 +1605,7 @@ app.post('/webhook-mercadopago', async (req, res) => {
       if (payment.status === 'approved' && payment.point_of_interaction?.transaction_data?.subscription_id) {
         const subscriptionId = payment.point_of_interaction.transaction_data.subscription_id;
 
-        const subResponse = await fetch(`https://api.mercadopago.com/preapproval/${subscriptionId}`, {
+        const subResponse = await fetch(`${MP_PREAPPROVAL_URL}/${subscriptionId}`, {
           headers: { 'Authorization': `Bearer ${accessToken}` }
         });
 
@@ -1604,7 +1622,7 @@ app.post('/webhook-mercadopago', async (req, res) => {
         if (payment.metadata?.subscription_id || payment.point_of_interaction?.transaction_data?.subscription_id) {
           const subscriptionId = payment.metadata?.subscription_id || payment.point_of_interaction.transaction_data.subscription_id;
           
-          const subResponse = await fetch(`https://api.mercadopago.com/preapproval/${subscriptionId}`, {
+          const subResponse = await fetch(`${MP_PREAPPROVAL_URL}/${subscriptionId}`, {
             headers: { 'Authorization': `Bearer ${accessToken}` }
           });
 
@@ -1693,7 +1711,7 @@ cron.schedule('* * * * *', async () => {
 
   try {
     const response = await axios.get(
-      'https://api.mercadopago.com/v1/payments/search', 
+      `${MP_PAYMENTS_URL}/search`, 
       {
         params: {
           status: 'refunded',
@@ -1732,7 +1750,7 @@ cron.schedule('* * * * *', async () => {
 
         try {
           const subResponse = await axios.get(
-            `https://api.mercadopago.com/preapproval/${subscriptionId}`,
+            `${MP_PREAPPROVAL_URL}/${subscriptionId}`,
             {
               headers: { 'Authorization': `Bearer ${accessToken}` }
             }
@@ -1800,7 +1818,7 @@ app.post('/cancelar-assinatura', verificarAutenticacao, async (req, res) => {
     try {
       // Primeiro verifica o status atual da assinatura
       const statusResponse = await axios.get(
-        `https://api.mercadopago.com/preapproval/${assinaturaId}`,
+        `${MP_PREAPPROVAL_URL}/${assinaturaId}`,
         {
           headers: {
             'Authorization': `Bearer ${accessToken}`
@@ -1812,7 +1830,7 @@ app.post('/cancelar-assinatura', verificarAutenticacao, async (req, res) => {
 
       // Tenta cancelar a assinatura
       const mpResponse = await axios.put(
-        `https://api.mercadopago.com/preapproval/${assinaturaId}`,
+        `${MP_PREAPPROVAL_URL}/${assinaturaId}`,
         { status: 'cancelled' },
         {
           headers: {

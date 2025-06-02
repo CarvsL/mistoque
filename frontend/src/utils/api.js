@@ -1,8 +1,14 @@
 import axios from 'axios';
 
+// Determina qual URL da API usar baseado no protocolo atual
+const getApiUrl = () => {
+  const isHttps = window.location.protocol === 'https:';
+  return isHttps ? import.meta.env.VITE_API_URL_HTTPS : import.meta.env.VITE_API_URL;
+};
+
 // Cria uma instância do Axios com configurações base
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,
+  baseURL: getApiUrl(),
   withCredentials: true,
   headers: {
     'Content-Type': 'application/json'
@@ -50,7 +56,7 @@ api.interceptors.request.use(async (config) => {
     if (!isRefreshing) {
       isRefreshing = true;
       try {
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}/csrf-token`, { withCredentials: true });
+        const response = await axios.get(`${getApiUrl()}/csrf-token`, { withCredentials: true });
         const token = response.data.csrfToken;
         
         // Atualiza o token no header

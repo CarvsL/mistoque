@@ -1,49 +1,58 @@
 # Dependencies
-/node_modules
-/.pnp
-.pnp.js
+**/node_modules
+**/.pnp
+**/.pnp.js
+
+# Environment files
+**/.env
+**/env
+**/.env.local
+**/.env.development.local
+**/.env.test.local
+**/.env.production.local
+
+# SSL certificates
+**/ssl
+**/*.pem
+
+# Logs
+**/npm-debug.log*
+**/yarn-debug.log*
+**/yarn-error.log*
+**/pnpm-debug.log*
+**/logs
+**/*.log
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Build directories
+**/dist
+**/build
+
+# Upload directories
+**/uploads
+**/temp
 
 # Testing
 /coverage
 
-# Production
-/build
-/dist
-
 # Misc
-.DS_Store
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
 .env.*
-
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# IDE
-.vscode/
-.idea/
-
-# Logs
-logs
-*.log
 
 # Runtime data
 pids
 *.pid
 *.seed
 *.pid.lock
-
-# SSL Certificates
-*.pem
-*.key
-*.crt
-
-# Uploads
-/backend/uploads/
 
 # Database
 *.sqlite
