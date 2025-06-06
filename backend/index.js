@@ -104,14 +104,19 @@ const db = mysql.createPool({
 // Configuração do multer para upload de arquivos
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, process.env.UPLOAD_DIR);
+    const uploadDir = path.join(__dirname, 'uploads');
+    // Garante que o diretório existe
+    if (!fs.existsSync(uploadDir)) {
+      fs.mkdirSync(uploadDir, { recursive: true });
+    }
+    cb(null, uploadDir);
   },
   filename: (req, file, cb) => {
     const extensao = path.extname(file.originalname);
     let nomeUnico;
     do {
       nomeUnico = uuidv4() + extensao;
-    } while (fs.existsSync(path.join(process.env.UPLOAD_DIR, nomeUnico)));
+    } while (fs.existsSync(path.join(__dirname, 'uploads', nomeUnico)));
     cb(null, nomeUnico);
   },
 });
@@ -119,10 +124,10 @@ const storage = multer.diskStorage({
 const upload = multer({
   storage,
   limits: {
-    fileSize: parseInt(process.env.MAX_FILE_SIZE)
+    fileSize: 5 * 1024 * 1024 // 5MB
   },
   fileFilter: (req, file, cb) => {
-    const allowedTypes = process.env.ALLOWED_FILE_TYPES.split(',');
+    const allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
     if (allowedTypes.includes(file.mimetype)) {
       cb(null, true);
     } else {
